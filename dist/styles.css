@@ -1,0 +1,32 @@
+.body {
+}
+.main {
+    display: flex;
+    flex-direction: row;
+}
+.primary-weather {
+    display: flex;
+    border: 2px solid black;
+    width: 300px;
+    height: 500px;
+}
+.gif {
+    border: 2px solid black;
+}
+.right-side {
+    border: 2px solid black;
+}
+.temp-toggle {
+}
+.secondary-weather {
+    border: 2px solid black;
+}
+.footer {
+    border: 2px solid black;
+    display: flex;
+}
+.forecast-buttons {
+}
+.forecast {
+    border: 2px solid black;
+}
