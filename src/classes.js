@@ -120,9 +120,6 @@ class WeatherObjects {
         };
 
         for (let i = 0; i < num_hours; i++) {
-            console.log(
-                jsonData.forecast.forecastday[forecast_day].hour[i].time
-            );
             hourlyForecast.time.push(
                 jsonData.forecast.forecastday[0].hour[forecast_day].time
             );

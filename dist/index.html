@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <script src="./main.js"></script>
+
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
@@ -12,6 +12,17 @@
             <div class="main">
                 <div class="primary-weather">
                     the primary weather info goes in this box
+                    <div>
+                        <label for="user-input">
+                            <span>Enter a city</span>
+                            <input
+                                type="text"
+                                id="user-input"
+                                placeholder="Enter a city"
+                            />
+                        </label>
+                        <button id="submit-button" type="button">submit</button>
+                    </div>
                 </div>
                 <div class="gif">
                     Gif selected from Giphy based on weather in this box
@@ -35,5 +46,6 @@
                 </div>
             </div>
         </div>
+        <script src="./main.js"></script>
     </body>
 </html>
