@@ -1,4 +1,4 @@
-import { WeatherManager } from './classes.js';
+import { WeatherManager } from './classes';
 
 const weatherManObj = new WeatherManager();
 weatherManObj.getWeather('atlanta');
