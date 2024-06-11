@@ -33,6 +33,7 @@ class WeatherManager {
         this.temp = '';
         // this.weatherObjectArray = [];
         this.weatherObject = [];
+        this.domManagerObject = [];
         this.tempUnit = 'f'; // 0 for F, 1 for C. Write an event listener that changes temp unit on click/toggle
         this.dailyHourly = 'd';
     }
@@ -49,19 +50,50 @@ class WeatherManager {
         );
         this.weatherObject = currentWeatherObj;
         // testing//
-        const domManager = new DomManager(this.weatherObject, this.tempUnit);
-        domManager.populatePrimaryWeather();
-        domManager.populateSecondaryWeather();
-        // domManager.populateDailyForecast();
-        domManager.populateHourlyForecast();
-        // this.populatePrimaryWeather();
-        // this.populateSecondaryWeather();
-        //
+        this.domManagerObject = new DomManager(
+            this.weatherObject,
+            this.tempUnit
+        );
+        this.domManagerObject.populatePrimaryWeather();
+        this.domManagerObject.populateSecondaryWeather();
+        this.domManagerObject.populateDailyForecast();
+
         console.log(weatherData);
         console.log(currentWeatherObj.currentWeather);
         console.log(currentWeatherObj.dailyForecast);
         console.log(currentWeatherObj.hourlyForecast);
         // add catch/then/ whatever statement to check for errors
+    }
+
+    populateDaily() {
+        this.domManagerObject.populateDailyForecast();
+    }
+
+    populateHourly() {
+        this.domManagerObject.populateHourlyForecast();
+    }
+
+    populateCurrent() {
+        this.domManagerObject.populatePrimaryWeather();
+        this.domManagerObject.populateSecondaryWeather();
+    }
+
+    toggleTempUnit() {
+        if (this.tempUnit === 'f') {
+            this.tempUnit = 'c';
+            this.domManagerObject.tempUnit = 'c';
+        } else {
+            this.tempUnit = 'f';
+            this.domManagerObject.tempUnit = 'f';
+        }
+    }
+
+    toggleDailyHourly() {
+        if (this.dailyHourly === 'd') {
+            this.dailyHourly = 'h';
+        } else {
+            this.dailyHourly = 'd';
+        }
     }
 }
 
