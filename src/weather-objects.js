@@ -83,21 +83,19 @@ class WeatherObjects {
 
         for (let i = 0; i < numHours; i++) {
             this.hourlyForecast.time.push(
-                jsonData.forecast.forecastday[0].hour[forecastDay].time
+                jsonData.forecast.forecastday[0].hour[i].time
             );
             this.hourlyForecast.temp_c.push(
-                jsonData.forecast.forecastday[0].hour[forecastDay].temp_c
+                jsonData.forecast.forecastday[0].hour[i].temp_c
             );
             this.hourlyForecast.temp_f.push(
-                jsonData.forecast.forecastday[0].hour[forecastDay].temp_f
+                jsonData.forecast.forecastday[0].hour[i].temp_f
             );
             this.hourlyForecast.condition_text.push(
-                jsonData.forecast.forecastday[0].hour[forecastDay].condition
-                    .text
+                jsonData.forecast.forecastday[0].hour[i].condition.text
             );
             this.hourlyForecast.condition_image.push(
-                jsonData.forecast.forecastday[0].hour[forecastDay].condition
-                    .icon
+                jsonData.forecast.forecastday[0].hour[i].condition.icon
             );
         }
         // return hourlyForecast;
