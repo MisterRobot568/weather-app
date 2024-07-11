@@ -39,30 +39,37 @@ class WeatherManager {
     }
 
     async getWeather(location) {
-        const response = await fetch(
-            `http://api.weatherapi.com/v1/forecast.json?key=72b1b6a1fd3d4c82b2c72414241505&q=${location}&days=3&aqi=no&alerts=no`,
-            { mode: 'cors' }
-        );
-        const weatherData = await response.json();
-        const currentWeatherObj = new WeatherObjects(
-            weatherData,
-            this.tempUnit
-        );
-        this.weatherObject = currentWeatherObj;
-        // testing//
-        this.domManagerObject = new DomManager(
-            this.weatherObject,
-            this.tempUnit
-        );
-        this.domManagerObject.populatePrimaryWeather();
-        this.domManagerObject.populateSecondaryWeather();
-        this.domManagerObject.populateDailyForecast();
+        try {
+            const response = await fetch(
+                `http://api.weatherapi.com/v1/forecast.json?key=72b1b6a1fd3d4c82b2c72414241505&q=${location}&days=3&aqi=no&alerts=no`,
+                { mode: 'cors' }
+            );
+            if (!response.ok) {
+                throw new Error('Network response was not ok.');
+            }
+            const weatherData = await response.json();
+            const currentWeatherObj = new WeatherObjects(
+                weatherData,
+                this.tempUnit
+            );
+            this.weatherObject = currentWeatherObj;
+            // testing//
+            this.domManagerObject = new DomManager(
+                this.weatherObject,
+                this.tempUnit
+            );
+            this.domManagerObject.populatePrimaryWeather();
+            this.domManagerObject.populateSecondaryWeather();
+            this.domManagerObject.populateDailyForecast();
 
-        console.log(weatherData);
-        console.log(currentWeatherObj.currentWeather);
-        console.log(currentWeatherObj.dailyForecast);
-        console.log(currentWeatherObj.hourlyForecast);
-        // add catch/then/ whatever statement to check for errors
+            console.log(weatherData);
+            console.log(currentWeatherObj.currentWeather);
+            console.log(currentWeatherObj.dailyForecast);
+            console.log(currentWeatherObj.hourlyForecast);
+            // add catch/then/ whatever statement to check for errors
+        } catch (error) {
+            console.error('Error fetching weather data:', error);
+        }
     }
 
     populateDaily() {
